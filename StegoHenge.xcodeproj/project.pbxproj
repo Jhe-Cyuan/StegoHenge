@@ -1,0 +1,701 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30290D5E253B53C300E87524 /* LSBOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D5D253B53C300E87524 /* LSBOriginal.swift */; };
+		30290D64253B6E9A00E87524 /* F5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D63253B6E9A00E87524 /* F5.swift */; };
+		30290D69253C102700E87524 /* Function4UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D68253C102700E87524 /* Function4UI.swift */; };
+		304F378325387E4A00FEEA9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F378225387E4A00FEEA9C /* AppDelegate.swift */; };
+		304F378525387E4A00FEEA9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F378425387E4A00FEEA9C /* SceneDelegate.swift */; };
+		304F378725387E4A00FEEA9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F378625387E4A00FEEA9C /* ContentView.swift */; };
+		304F378A25387E4A00FEEA9C /* StegoHenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 304F378825387E4A00FEEA9C /* StegoHenge.xcdatamodeld */; };
+		304F378C25387E4D00FEEA9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304F378B25387E4D00FEEA9C /* Assets.xcassets */; };
+		304F378F25387E4D00FEEA9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304F378E25387E4D00FEEA9C /* Preview Assets.xcassets */; };
+		304F379225387E4D00FEEA9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 304F379025387E4D00FEEA9C /* LaunchScreen.storyboard */; };
+		304F379D25387E4E00FEEA9C /* StegoHengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F379C25387E4E00FEEA9C /* StegoHengeTests.swift */; };
+		304F37A825387E4E00FEEA9C /* StegoHengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37A725387E4E00FEEA9C /* StegoHengeUITests.swift */; };
+		304F37B92538857100FEEA9C /* StegoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37B82538857100FEEA9C /* StegoView.swift */; };
+		304F37C12538C98C00FEEA9C /* EmbeddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37C02538C98C00FEEA9C /* EmbeddingView.swift */; };
+		304F37C62538C9A500FEEA9C /* ExtractingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37C52538C9A500FEEA9C /* ExtractingView.swift */; };
+		304F37D22539F55800FEEA9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37D12539F55800FEEA9C /* ImagePicker.swift */; };
+		304F37E2253A29E900FEEA9C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37E1253A29E900FEEA9C /* Extension.swift */; };
+		304F37E7253A2A1700FEEA9C /* Mathematic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37E6253A2A1700FEEA9C /* Mathematic.swift */; };
+		304F37F0253A2A8700FEEA9C /* RSAKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37EF253A2A8700FEEA9C /* RSAKey.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		304F379925387E4E00FEEA9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 304F377725387E4A00FEEA9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 304F377E25387E4A00FEEA9C;
+			remoteInfo = StegoHenge;
+		};
+		304F37A425387E4E00FEEA9C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 304F377725387E4A00FEEA9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 304F377E25387E4A00FEEA9C;
+			remoteInfo = StegoHenge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30290D5D253B53C300E87524 /* LSBOriginal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSBOriginal.swift; sourceTree = "<group>"; };
+		30290D63253B6E9A00E87524 /* F5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F5.swift; sourceTree = "<group>"; };
+		30290D68253C102700E87524 /* Function4UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function4UI.swift; sourceTree = "<group>"; };
+		304F377F25387E4A00FEEA9C /* StegoHenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StegoHenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		304F378225387E4A00FEEA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		304F378425387E4A00FEEA9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		304F378625387E4A00FEEA9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		304F378925387E4A00FEEA9C /* StegoHenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StegoHenge.xcdatamodel; sourceTree = "<group>"; };
+		304F378B25387E4D00FEEA9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		304F378E25387E4D00FEEA9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		304F379125387E4D00FEEA9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		304F379325387E4D00FEEA9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		304F379825387E4E00FEEA9C /* StegoHengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StegoHengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		304F379C25387E4E00FEEA9C /* StegoHengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StegoHengeTests.swift; sourceTree = "<group>"; };
+		304F379E25387E4E00FEEA9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		304F37A325387E4E00FEEA9C /* StegoHengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StegoHengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		304F37A725387E4E00FEEA9C /* StegoHengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StegoHengeUITests.swift; sourceTree = "<group>"; };
+		304F37A925387E4E00FEEA9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		304F37B82538857100FEEA9C /* StegoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StegoView.swift; sourceTree = "<group>"; };
+		304F37C02538C98C00FEEA9C /* EmbeddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingView.swift; sourceTree = "<group>"; };
+		304F37C52538C9A500FEEA9C /* ExtractingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractingView.swift; sourceTree = "<group>"; };
+		304F37D12539F55800FEEA9C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		304F37E1253A29E900FEEA9C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		304F37E6253A2A1700FEEA9C /* Mathematic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mathematic.swift; sourceTree = "<group>"; };
+		304F37EF253A2A8700FEEA9C /* RSAKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAKey.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		304F377C25387E4A00FEEA9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		304F379525387E4E00FEEA9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		304F37A025387E4E00FEEA9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		304F377625387E4A00FEEA9C = {
+			isa = PBXGroup;
+			children = (
+				304F378125387E4A00FEEA9C /* StegoHenge */,
+				304F379B25387E4E00FEEA9C /* StegoHengeTests */,
+				304F37A625387E4E00FEEA9C /* StegoHengeUITests */,
+				304F378025387E4A00FEEA9C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		304F378025387E4A00FEEA9C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				304F377F25387E4A00FEEA9C /* StegoHenge.app */,
+				304F379825387E4E00FEEA9C /* StegoHengeTests.xctest */,
+				304F37A325387E4E00FEEA9C /* StegoHengeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		304F378125387E4A00FEEA9C /* StegoHenge */ = {
+			isa = PBXGroup;
+			children = (
+				304F378225387E4A00FEEA9C /* AppDelegate.swift */,
+				304F378425387E4A00FEEA9C /* SceneDelegate.swift */,
+				304F378625387E4A00FEEA9C /* ContentView.swift */,
+				304F37B82538857100FEEA9C /* StegoView.swift */,
+				304F37C02538C98C00FEEA9C /* EmbeddingView.swift */,
+				304F37C52538C9A500FEEA9C /* ExtractingView.swift */,
+				304F378B25387E4D00FEEA9C /* Assets.xcassets */,
+				304F379025387E4D00FEEA9C /* LaunchScreen.storyboard */,
+				304F379325387E4D00FEEA9C /* Info.plist */,
+				304F378825387E4A00FEEA9C /* StegoHenge.xcdatamodeld */,
+				304F37D02539F4A500FEEA9C /* Function */,
+				304F378D25387E4D00FEEA9C /* Preview Content */,
+			);
+			path = StegoHenge;
+			sourceTree = "<group>";
+		};
+		304F378D25387E4D00FEEA9C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				304F378E25387E4D00FEEA9C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		304F379B25387E4E00FEEA9C /* StegoHengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				304F379C25387E4E00FEEA9C /* StegoHengeTests.swift */,
+				304F379E25387E4E00FEEA9C /* Info.plist */,
+			);
+			path = StegoHengeTests;
+			sourceTree = "<group>";
+		};
+		304F37A625387E4E00FEEA9C /* StegoHengeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				304F37A725387E4E00FEEA9C /* StegoHengeUITests.swift */,
+				304F37A925387E4E00FEEA9C /* Info.plist */,
+			);
+			path = StegoHengeUITests;
+			sourceTree = "<group>";
+		};
+		304F37D02539F4A500FEEA9C /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				304F37DC253A21A200FEEA9C /* Extension */,
+				304F37EE253A2A5C00FEEA9C /* Cryptography */,
+				304F37DB253A218C00FEEA9C /* Steganography */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		304F37DB253A218C00FEEA9C /* Steganography */ = {
+			isa = PBXGroup;
+			children = (
+				304F37F7253A2AC100FEEA9C /* LSB */,
+				304F37F8253A2ACA00FEEA9C /* F5 */,
+			);
+			path = Steganography;
+			sourceTree = "<group>";
+		};
+		304F37DC253A21A200FEEA9C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				30290D68253C102700E87524 /* Function4UI.swift */,
+				304F37E1253A29E900FEEA9C /* Extension.swift */,
+				304F37E6253A2A1700FEEA9C /* Mathematic.swift */,
+				304F37D12539F55800FEEA9C /* ImagePicker.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		304F37EE253A2A5C00FEEA9C /* Cryptography */ = {
+			isa = PBXGroup;
+			children = (
+				304F37EF253A2A8700FEEA9C /* RSAKey.swift */,
+			);
+			path = Cryptography;
+			sourceTree = "<group>";
+		};
+		304F37F7253A2AC100FEEA9C /* LSB */ = {
+			isa = PBXGroup;
+			children = (
+				30290D5D253B53C300E87524 /* LSBOriginal.swift */,
+			);
+			path = LSB;
+			sourceTree = "<group>";
+		};
+		304F37F8253A2ACA00FEEA9C /* F5 */ = {
+			isa = PBXGroup;
+			children = (
+				30290D63253B6E9A00E87524 /* F5.swift */,
+			);
+			path = F5;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		304F377E25387E4A00FEEA9C /* StegoHenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 304F37AC25387E4E00FEEA9C /* Build configuration list for PBXNativeTarget "StegoHenge" */;
+			buildPhases = (
+				304F377B25387E4A00FEEA9C /* Sources */,
+				304F377C25387E4A00FEEA9C /* Frameworks */,
+				304F377D25387E4A00FEEA9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StegoHenge;
+			productName = StegoHenge;
+			productReference = 304F377F25387E4A00FEEA9C /* StegoHenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		304F379725387E4E00FEEA9C /* StegoHengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 304F37AF25387E4E00FEEA9C /* Build configuration list for PBXNativeTarget "StegoHengeTests" */;
+			buildPhases = (
+				304F379425387E4E00FEEA9C /* Sources */,
+				304F379525387E4E00FEEA9C /* Frameworks */,
+				304F379625387E4E00FEEA9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				304F379A25387E4E00FEEA9C /* PBXTargetDependency */,
+			);
+			name = StegoHengeTests;
+			productName = StegoHengeTests;
+			productReference = 304F379825387E4E00FEEA9C /* StegoHengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		304F37A225387E4E00FEEA9C /* StegoHengeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 304F37B225387E4E00FEEA9C /* Build configuration list for PBXNativeTarget "StegoHengeUITests" */;
+			buildPhases = (
+				304F379F25387E4E00FEEA9C /* Sources */,
+				304F37A025387E4E00FEEA9C /* Frameworks */,
+				304F37A125387E4E00FEEA9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				304F37A525387E4E00FEEA9C /* PBXTargetDependency */,
+			);
+			name = StegoHengeUITests;
+			productName = StegoHengeUITests;
+			productReference = 304F37A325387E4E00FEEA9C /* StegoHengeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		304F377725387E4A00FEEA9C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					304F377E25387E4A00FEEA9C = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					304F379725387E4E00FEEA9C = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 304F377E25387E4A00FEEA9C;
+					};
+					304F37A225387E4E00FEEA9C = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 304F377E25387E4A00FEEA9C;
+					};
+				};
+			};
+			buildConfigurationList = 304F377A25387E4A00FEEA9C /* Build configuration list for PBXProject "StegoHenge" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 304F377625387E4A00FEEA9C;
+			productRefGroup = 304F378025387E4A00FEEA9C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				304F377E25387E4A00FEEA9C /* StegoHenge */,
+				304F379725387E4E00FEEA9C /* StegoHengeTests */,
+				304F37A225387E4E00FEEA9C /* StegoHengeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		304F377D25387E4A00FEEA9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				304F379225387E4D00FEEA9C /* LaunchScreen.storyboard in Resources */,
+				304F378F25387E4D00FEEA9C /* Preview Assets.xcassets in Resources */,
+				304F378C25387E4D00FEEA9C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		304F379625387E4E00FEEA9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		304F37A125387E4E00FEEA9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		304F377B25387E4A00FEEA9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				304F37E2253A29E900FEEA9C /* Extension.swift in Sources */,
+				304F37B92538857100FEEA9C /* StegoView.swift in Sources */,
+				30290D5E253B53C300E87524 /* LSBOriginal.swift in Sources */,
+				30290D64253B6E9A00E87524 /* F5.swift in Sources */,
+				304F37E7253A2A1700FEEA9C /* Mathematic.swift in Sources */,
+				304F378A25387E4A00FEEA9C /* StegoHenge.xcdatamodeld in Sources */,
+				304F37C62538C9A500FEEA9C /* ExtractingView.swift in Sources */,
+				304F37C12538C98C00FEEA9C /* EmbeddingView.swift in Sources */,
+				304F378325387E4A00FEEA9C /* AppDelegate.swift in Sources */,
+				304F37D22539F55800FEEA9C /* ImagePicker.swift in Sources */,
+				30290D69253C102700E87524 /* Function4UI.swift in Sources */,
+				304F378525387E4A00FEEA9C /* SceneDelegate.swift in Sources */,
+				304F378725387E4A00FEEA9C /* ContentView.swift in Sources */,
+				304F37F0253A2A8700FEEA9C /* RSAKey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		304F379425387E4E00FEEA9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				304F379D25387E4E00FEEA9C /* StegoHengeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		304F379F25387E4E00FEEA9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				304F37A825387E4E00FEEA9C /* StegoHengeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		304F379A25387E4E00FEEA9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 304F377E25387E4A00FEEA9C /* StegoHenge */;
+			targetProxy = 304F379925387E4E00FEEA9C /* PBXContainerItemProxy */;
+		};
+		304F37A525387E4E00FEEA9C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 304F377E25387E4A00FEEA9C /* StegoHenge */;
+			targetProxy = 304F37A425387E4E00FEEA9C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		304F379025387E4D00FEEA9C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				304F379125387E4D00FEEA9C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		304F37AA25387E4E00FEEA9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		304F37AB25387E4E00FEEA9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		304F37AD25387E4E00FEEA9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"StegoHenge/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StegoHenge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.mcu.StegoHenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		304F37AE25387E4E00FEEA9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"StegoHenge/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StegoHenge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.mcu.StegoHenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		304F37B025387E4E00FEEA9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StegoHengeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.mcu.StegoHengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StegoHenge.app/StegoHenge";
+			};
+			name = Debug;
+		};
+		304F37B125387E4E00FEEA9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StegoHengeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.mcu.StegoHengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StegoHenge.app/StegoHenge";
+			};
+			name = Release;
+		};
+		304F37B325387E4E00FEEA9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StegoHengeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.mcu.StegoHengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StegoHenge;
+			};
+			name = Debug;
+		};
+		304F37B425387E4E00FEEA9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StegoHengeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.mcu.StegoHengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = StegoHenge;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		304F377A25387E4A00FEEA9C /* Build configuration list for PBXProject "StegoHenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304F37AA25387E4E00FEEA9C /* Debug */,
+				304F37AB25387E4E00FEEA9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		304F37AC25387E4E00FEEA9C /* Build configuration list for PBXNativeTarget "StegoHenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304F37AD25387E4E00FEEA9C /* Debug */,
+				304F37AE25387E4E00FEEA9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		304F37AF25387E4E00FEEA9C /* Build configuration list for PBXNativeTarget "StegoHengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304F37B025387E4E00FEEA9C /* Debug */,
+				304F37B125387E4E00FEEA9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		304F37B225387E4E00FEEA9C /* Build configuration list for PBXNativeTarget "StegoHengeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				304F37B325387E4E00FEEA9C /* Debug */,
+				304F37B425387E4E00FEEA9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		304F378825387E4A00FEEA9C /* StegoHenge.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				304F378925387E4A00FEEA9C /* StegoHenge.xcdatamodel */,
+			);
+			currentVersion = 304F378925387E4A00FEEA9C /* StegoHenge.xcdatamodel */;
+			path = StegoHenge.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 304F377725387E4A00FEEA9C /* Project object */;
+}
