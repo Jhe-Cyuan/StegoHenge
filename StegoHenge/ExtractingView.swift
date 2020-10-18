@@ -64,7 +64,9 @@ struct ExtractingView: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
+                    Button(action: {
+                        print(LSB_Take(image: self.uiiHidedImg) ?? "nil")
+                    }) {
                         VStack {
                             Image(systemName: "tray.and.arrow.up.fill")
                                 .resizable()

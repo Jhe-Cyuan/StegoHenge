@@ -89,7 +89,18 @@ struct EmbeddingView: View {
                 Spacer()
                 
                 if(self.strMessage != "") {
-                    Button(action: {}) {
+                    Button(action: {
+                        self.uiiHidedImg = LSB_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                        
+                        if self.uiiHidedImg != nil {
+                            UIImageWriteToSavedPhotosAlbum(
+                                UIImage(data: self.uiiHidedImg!.pngData()!)!,
+                                nil,
+                                nil,
+                                nil
+                            )
+                        }
+                    }) {
                         VStack {
                             Image(systemName: "tray.and.arrow.down.fill")
                                 .resizable()
