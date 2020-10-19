@@ -67,7 +67,7 @@ func LSB_Take(image uiiImg:UIImage?) -> String? {
     var ui8BinInfo:[UInt8] = [UInt8]()
     var dataInfo:Data = Data()
     
-    var iIndex:Int = 0
+    var iImgIndex:Int = 0
     
     //Build [UInt8] as RGBA array from UIImage
     guard uiiImg != nil else {return nil}
@@ -77,26 +77,26 @@ func LSB_Take(image uiiImg:UIImage?) -> String? {
     guard ui8Img != nil else {return nil}
     while iInfoBinLen.count < 64 {
         //Skip Alpha Channel
-        guard (iIndex + 1) % 4 != 0 else {
-            iIndex += 1
+        guard (iImgIndex + 1) % 4 != 0 else {
+            iImgIndex += 1
             continue
         }
         
-        iInfoBinLen.append(ui8Img![iIndex] & 1)
-        iIndex += 1
+        iInfoBinLen.append(ui8Img![iImgIndex] & 1)
+        iImgIndex += 1
     }
     iInfoLength = bin2dec(binArr: iInfoBinLen)
     
     //Get Binary Infomation
     while ui8BinInfo.count < iInfoLength {
         //Skip Alpha Channel
-        guard (iIndex + 1) % 4 != 0 else {
-            iIndex += 1
+        guard (iImgIndex + 1) % 4 != 0 else {
+            iImgIndex += 1
             continue
         }
         
-        ui8BinInfo.append(ui8Img![iIndex]&1)
-        iIndex += 1
+        ui8BinInfo.append(ui8Img![iImgIndex]&1)
+        iImgIndex += 1
     }
     
     //Make infomation from [UInt8] to Data

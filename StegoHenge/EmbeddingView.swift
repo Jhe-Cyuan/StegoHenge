@@ -21,10 +21,6 @@ struct EmbeddingView: View {
     
     @State private var uiiHidedImg:UIImage? = nil
     
-    
-    @State private var uiiCarrierImg2:UIImage? = nil
-    @State private var uiiHidedImg2:UIImage? = nil
-    
     var body: some View {
         ZStack {
             Image("background")
@@ -91,6 +87,10 @@ struct EmbeddingView: View {
                 if(self.strMessage != "") {
                     Button(action: {
                         self.uiiHidedImg = LSB_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                        print(LSB_Take(image: self.uiiHidedImg) ?? "Error. Maybe nil.")
+                        
+                        self.uiiHidedImg = F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                        print(F5_Take(image: self.uiiHidedImg) ?? "Error. Maybe nil.")
                         
                         if self.uiiHidedImg != nil {
                             UIImageWriteToSavedPhotosAlbum(

@@ -65,7 +65,8 @@ struct ExtractingView: View {
                     Spacer()
                     
                     Button(action: {
-                        print(LSB_Take(image: self.uiiHidedImg) ?? "nil")
+                        //print(LSB_Take(image: self.uiiHidedImg) ?? "nil")
+                        print(F5_Take(image: self.uiiHidedImg) ?? "nil")
                     }) {
                         VStack {
                             Image(systemName: "tray.and.arrow.up.fill")
