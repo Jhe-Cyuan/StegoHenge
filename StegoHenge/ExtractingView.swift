@@ -31,6 +31,8 @@ struct ExtractingView: View {
                     .foregroundColor(.white)
                     .padding([.all],25)
                 
+                Spacer()
+                
                 if(uiiHidedImg == nil) {
                     Button (action: {self.bImgSourceSheet = true}) {
                         VStack {
@@ -53,7 +55,7 @@ struct ExtractingView: View {
                             Image(uiImage: self.uiiHidedImg!)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 150)
+                                .frame(height: 400)
                                 .foregroundColor(.white)
                             
                             Text("Click to Change Image")
@@ -94,13 +96,6 @@ struct ExtractingView: View {
                         .default(Text("Photo Library")) {
                             self.bShowImgPkr = true
                             self.uiipkrctrlerSourceType = .photoLibrary
-                        },
-                        .default(Text("Camera")) {
-                            self.bShowImgPkr = true
-                            self.uiipkrctrlerSourceType = .camera
-                        },
-                        .cancel(Text("Cancel")) {
-                            self.uiiHidedImg = nil
                         }
                     ]
                 )
@@ -111,6 +106,7 @@ struct ExtractingView: View {
                             imageURL: self.$urlHidedImg,
                             sourceType: self.uiipkrctrlerSourceType)
             }
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
     }
 }

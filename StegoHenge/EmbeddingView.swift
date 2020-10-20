@@ -35,6 +35,8 @@ struct EmbeddingView: View {
                     .foregroundColor(.white)
                     .padding([.all],25)
                 
+                Spacer()
+                
                 if(uiiCarrierImg == nil) {
                     Button (action: {self.bImgSourceSheet = true}) {
                         VStack {
@@ -57,7 +59,7 @@ struct EmbeddingView: View {
                             Image(uiImage: self.uiiCarrierImg!)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 150)
+                                .frame(height: 400)
                                 .foregroundColor(.white)
                             
                             Text("Click to Change Image")
@@ -67,8 +69,8 @@ struct EmbeddingView: View {
                     }
                 }
                 
-                HStack{
-                    if(uiiCarrierImg != nil) {
+                if(uiiCarrierImg != nil) {
+                    HStack{
                         Image(systemName: "envelope.fill")
                             .resizable()
                             .scaledToFit()
@@ -79,8 +81,8 @@ struct EmbeddingView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width:250)
                     }
+                    .padding([.top],35)
                 }
-                .padding([.top],35)
                 
                 Spacer()
                 
@@ -125,16 +127,9 @@ struct EmbeddingView: View {
                         .default(Text("Photo Library")) {
                             self.bShowImgPkr = true
                             self.uiipkrctrlerSourceType = .photoLibrary
-                        },
-                        .default(Text("Camera")) {
-                            self.bShowImgPkr = true
-                            self.uiipkrctrlerSourceType = .camera
-                        },
-                        .cancel(Text("Cancel")) {
-                            self.uiiCarrierImg = nil
-                            strMessage = ""
                         }
-                    ])
+                    ]
+                )
             }
             .sheet(isPresented: $bShowImgPkr) {
                 ImagePicker(image: self.$uiiCarrierImg,
@@ -142,6 +137,7 @@ struct EmbeddingView: View {
                             imageURL: self.$urlCarrierImg,
                             sourceType: self.uiipkrctrlerSourceType)
             }
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
     }
 }

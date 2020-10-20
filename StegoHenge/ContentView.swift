@@ -201,6 +201,7 @@ struct ContentView: View {
                     }
                     .padding(.all, 20)
                 })
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
             .navigationBarItems(
                 trailing:
@@ -238,6 +239,7 @@ struct ContentView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
