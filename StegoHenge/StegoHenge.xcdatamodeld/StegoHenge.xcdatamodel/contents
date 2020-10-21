@@ -4,7 +4,13 @@
         <attribute name="strCyptoAlgo" optional="YES" attributeType="String"/>
         <attribute name="strStegoAlgo" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="RSAKey" representedClassName="RSAKey" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="privateKey" optional="YES" attributeType="String"/>
+        <attribute name="publicKey" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Configure" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="RSAKey" positionX="-54" positionY="9" width="128" height="88"/>
     </elements>
 </model>

@@ -10,11 +10,16 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var bShowSetting:Bool = false
+    @State private var bShowRSAUser:Bool = false
+    @State private var bShowNewRSAUser:Bool = false
     
     @State private var strStegoAlgo:String = ""
     @State private var strCyptoAlgo:String = ""
     
-    @State private var textsRSAKey:[Text] = [Text]()
+    @State private var strNewRSAUserName:String = ""
+    @State private var strNewRSAUserKey:String = ""
+    
+    @State private var textsRSAKey:[Text] = []
     
     var body: some View {
         NavigationView {
@@ -100,40 +105,74 @@ struct ContentView: View {
                             HStack {
                                 Spacer()
                                 
-                                Text("RSA Key")
+                                Text("RSA Key Manager")
                                 
-                                Button(action: {print("press")}) {
+                                Button(action: {
+                                    self.bShowRSAUser = false
+                                    self.bShowNewRSAUser = true
+                                }) {
                                     Image(systemName: "person.crop.circle.badge.plus")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: 40)
                                 }
-                                .buttonStyle(BorderlessButtonStyle())
                                 
                                 Spacer()
-                            }
-                            
-                            Form {
-                                ForEach(0..<self.textsRSAKey.count) {
-                                    self.textsRSAKey[$0]
-                                        .contextMenu{
-                                            Button(action:{}) {
-                                                Text("Edit")
-                                                Image(systemName: "pencil")
-                                            }
-                                            Button(action:{}) {
-                                                Text("Delete")
-                                                    .foregroundColor(.red)
-                                                Image(systemName: "trash")
-                                                    .foregroundColor(.red)
-                                            }
-                                        }
+                                
+                                Button(action: {
+                                    self.bShowRSAUser = !self.bShowRSAUser
+                                    self.bShowNewRSAUser = false
+                                }) {
+                                    Image(systemName: self.bShowRSAUser ? "eye.slash.fill" : "eye.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 40, height: 40)
                                 }
                             }
-                            .frame(height: 200)
+                            
+                            if self.bShowNewRSAUser {
+                                VStack {
+                                    TextField("Input user name here.", text: self.$strNewRSAUserName)
+                                        .padding()
+                                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 2))
+                                    TextField("Input user key here.", text: self.$strNewRSAUserKey)
+                                        .padding()
+                                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 2))
+                                    Button(action: {
+                                        self.bShowNewRSAUser = false
+                                    }) {
+                                        Image(systemName: "plus.circle.fill")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 40, height: 40)
+                                    }
+                                }
+                                .padding()
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.black, lineWidth: 2))
+                            }
+                            
+                            if self.bShowRSAUser {
+                                Form {
+                                    ForEach(0..<self.textsRSAKey.count) {
+                                        self.textsRSAKey[$0]
+                                            .contextMenu{
+                                                Button(action:{}) {
+                                                    Text("Edit")
+                                                    Image(systemName: "pencil")
+                                                }
+                                                Button(action:{}) {
+                                                    Text("Delete")
+                                                    Image(systemName: "trash")
+                                                }
+                                            }
+                                    }
+                                }
+                                .frame(height: 200)
+                            }
                             
                             Spacer()
                         }
+                        .buttonStyle(BorderlessButtonStyle())
                         .font(.custom("Futura-Medium", size: 20))
                         
                         VStack {
@@ -169,6 +208,7 @@ struct ContentView: View {
                         let app = UIApplication.shared.delegate as! AppDelegate
                         let context = app.persistentContainer.viewContext
                         var config:[Configure]
+                        var arrRSAKey:[RSAKey]
                         
                         do {
                             config = try context.fetch(Configure.fetchRequest())
@@ -178,7 +218,20 @@ struct ContentView: View {
                         } catch {
                             print(error)
                         }
+                        
+                        do {
+                            self.textsRSAKey.removeAll()
+                            
+                            arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+                            
+                            for i in 0..<arrRSAKey.count {
+                                self.textsRSAKey.append(Text(arrRSAKey[i].name ?? "Name Error"))
+                            }
+                        } catch {
+                            print(error)
+                        }
                     }
+                    .frame(width: UIScreen.main.bounds.width - 100)
                     
                     Button(action: {
                         self.bShowSetting = false
@@ -201,45 +254,87 @@ struct ContentView: View {
                     }
                     .padding(.all, 20)
                 })
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                //.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
             .navigationBarItems(
                 trailing:
-                    Button(action: {self.bShowSetting = true}) {
+                    Button(action: {
+                        self.bShowSetting = true
+                        self.bShowNewRSAUser = false
+                        self.bShowRSAUser = false
+                    }) {
                         Image(systemName: "ellipsis")
                             .resizable()
                             .scaledToFit()
                             .foregroundColor(.white)
-                            .frame(width: 25, alignment: .topTrailing)
+                            .frame(width: 25, alignment: .trailing)
                     }
-                    .frame(width: 100, height: 100, alignment: .trailing)
+                    .frame(width: 200, height: 200, alignment: .trailing)
+                    .padding()
             )
-            .onAppear() {
-                let app = UIApplication.shared.delegate as! AppDelegate
-                let context = app.persistentContainer.viewContext
-                var config:[Configure]
-                
-                do {
-                    config = try context.fetch(Configure.fetchRequest())
-                    
-                    switch config.count {
-                    case 0:
-                        let newConfig = Configure(context: context)
-                        newConfig.strCyptoAlgo = "RSA"
-                        newConfig.strStegoAlgo = "LSB Original"
-                        self.strCyptoAlgo = "RSA"
-                        self.strStegoAlgo = "LSB Original"
-                        app.saveContext()
-                    default:
-                        self.strCyptoAlgo = config[0].strCyptoAlgo!
-                        self.strStegoAlgo = config[0].strStegoAlgo!
-                    }
-                } catch {
-                    print(error)
-                }
-            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear() {
+            let app = UIApplication.shared.delegate as! AppDelegate
+            let context = app.persistentContainer.viewContext
+            var arrConfig:[Configure]
+            var arrRSAKey:[RSAKey]
+            
+            do {
+                arrConfig = try context.fetch(Configure.fetchRequest())
+                
+                switch arrConfig.count {
+                case 0:
+                    let newConfig = Configure(context: context)
+                    newConfig.strCyptoAlgo = "RSA"
+                    newConfig.strStegoAlgo = "LSB Original"
+                    self.strCyptoAlgo = "RSA"
+                    self.strStegoAlgo = "LSB Original"
+                    app.saveContext()
+                default:
+                    self.strCyptoAlgo = arrConfig[0].strCyptoAlgo!
+                    self.strStegoAlgo = arrConfig[0].strStegoAlgo!
+                }
+            } catch {
+                print(error)
+            }
+            
+            do {
+                arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+                
+                switch arrRSAKey.count {
+                case 0:
+                    let newRSAKey = RSAKey(context: context)
+                    let key = buildRSAKey()
+                    
+                    var data:Data
+                    var b64PublicKey:String = ""
+                    var b64PrivateKey:String = ""
+                    
+                    if let cfdata = SecKeyCopyExternalRepresentation(key.publicKey!, nil) {
+                        data = cfdata as Data
+                        b64PublicKey = data.base64EncodedString()
+                    }
+                    
+                    if let cfdata = SecKeyCopyExternalRepresentation(key.privateKey!, nil) {
+                        data = cfdata as Data
+                        b64PrivateKey = data.base64EncodedString()
+                    }
+                    
+                    newRSAKey.name = "MySelf"
+                    newRSAKey.publicKey = b64PublicKey
+                    newRSAKey.privateKey = b64PrivateKey
+                    
+                    app.saveContext()
+                default:
+                    for i in 0..<arrRSAKey.count {
+                        self.textsRSAKey.append(Text(arrRSAKey[i].name ?? "Name Error"))
+                    }
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
