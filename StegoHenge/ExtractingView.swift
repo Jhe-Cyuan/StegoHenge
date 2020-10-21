@@ -14,7 +14,7 @@ struct ExtractingView: View {
     
     @State private var uiipkrctrlerSourceType:UIImagePickerController.SourceType = .photoLibrary
     
-    @State private var uiiHidedImg:UIImage? = nil
+    @State private var uiiHidedImg:UIImage? = UIImage(named: "background")//nil
     @State private var urlHidedImg:URL? = nil
     
     var body: some View {
@@ -27,11 +27,9 @@ struct ExtractingView: View {
             
             VStack {
                 Text("Extracting")
-                    .font(.custom("Futura-Meduim", size: 30))
+                    .font(.custom("Futura-Meduim", size: 100))
                     .foregroundColor(.white)
                     .padding([.all],25)
-                
-                Spacer()
                 
                 if(uiiHidedImg == nil) {
                     Button (action: {self.bImgSourceSheet = true}) {
@@ -44,7 +42,7 @@ struct ExtractingView: View {
                             
                             Text("Click to Select Image")
                                 .foregroundColor(Color.white)
-                                .font(.custom("Futura-Medium", size: 14))
+                                .font(.custom("Futura-Medium", size: 30))
                         }
                     }
                 }
@@ -55,12 +53,12 @@ struct ExtractingView: View {
                             Image(uiImage: self.uiiHidedImg!)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 400)
+                                .frame(height: 300)
                                 .foregroundColor(.white)
                             
                             Text("Click to Change Image")
                                 .foregroundColor(Color.white)
-                                .font(.custom("Futura-Medium", size: 14))
+                                .font(.custom("Futura-Medium", size: 30))
                         }
                     }
                     
@@ -79,7 +77,7 @@ struct ExtractingView: View {
                             
                             Text("Extracting")
                                 .foregroundColor(Color.white)
-                                .font(.custom("Futura-Medium", size: 14))
+                                .font(.custom("Futura-Medium", size: 30))
                         }
                     }
                 }

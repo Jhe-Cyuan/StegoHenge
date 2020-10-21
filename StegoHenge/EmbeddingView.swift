@@ -16,10 +16,13 @@ struct EmbeddingView: View {
     
     @State private var uiipkrctrlerSourceType:UIImagePickerController.SourceType = .photoLibrary
     
-    @State private var uiiCarrierImg:UIImage? = nil
+    @State private var uiiCarrierImg:UIImage? = UIImage(named: "background")//nil
     @State private var urlCarrierImg:URL? = nil
     
     @State private var uiiHidedImg:UIImage? = nil
+    
+    @State private var arrRSAKey:[RSAKey] = []
+    @State private var iUserNameIndex:Int = 0
     
     var body: some View {
         ZStack {
@@ -31,11 +34,9 @@ struct EmbeddingView: View {
             
             VStack {
                 Text("Embedding")
-                    .font(.custom("Futura-Meduim", size: 30))
+                    .font(.custom("Futura-Meduim", size: 100))
                     .foregroundColor(.white)
                     .padding([.all],25)
-                
-                Spacer()
                 
                 if(uiiCarrierImg == nil) {
                     Button (action: {self.bImgSourceSheet = true}) {
@@ -48,7 +49,7 @@ struct EmbeddingView: View {
                             
                             Text("Click to Select Image")
                                 .foregroundColor(Color.white)
-                                .font(.custom("Futura-Medium", size: 14))
+                                .font(.custom("Futura-Medium", size: 30))
                         }
                     }
                 }
@@ -59,17 +60,33 @@ struct EmbeddingView: View {
                             Image(uiImage: self.uiiCarrierImg!)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(height: 400)
+                                .frame(height: 300)
                                 .foregroundColor(.white)
                             
                             Text("Click to Change Image")
                                 .foregroundColor(Color.white)
-                                .font(.custom("Futura-Medium", size: 14))
+                                .font(.custom("Futura-Medium", size: 30))
                         }
                     }
                 }
                 
                 if(uiiCarrierImg != nil) {
+                    Spacer()
+                    
+                    Picker(
+                        selection: self.$iUserNameIndex,
+                        label: Text("For: \((self.arrRSAKey.count != 0) ? self.arrRSAKey[self.iUserNameIndex].name! : "")")) {
+                        ForEach(0..<self.arrRSAKey.count, id: \.self) { value in
+                            Text(self.arrRSAKey[value].name ?? "")
+                                .tag(value)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .foregroundColor(Color.blue)
+                    .font(.custom("Futura-Medium", size: 30))
+                    .padding()
+                    .frame(width: 50, height: 16)
+                    
                     HStack{
                         Image(systemName: "envelope.fill")
                             .resizable()
@@ -89,10 +106,8 @@ struct EmbeddingView: View {
                 if(self.strMessage != "") {
                     Button(action: {
                         self.uiiHidedImg = LSB_Hide(image: self.uiiCarrierImg, data: self.strMessage)
-                        print(LSB_Take(image: self.uiiHidedImg) ?? "Error. Maybe nil.")
                         
                         self.uiiHidedImg = F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
-                        print(F5_Take(image: self.uiiHidedImg) ?? "Error. Maybe nil.")
                         
                         if self.uiiHidedImg != nil {
                             UIImageWriteToSavedPhotosAlbum(
@@ -112,12 +127,12 @@ struct EmbeddingView: View {
                             
                             Text("Embedding")
                                 .foregroundColor(Color.white)
-                                .font(.custom("Futura-Medium", size: 14))
+                                .font(.custom("Futura-Medium", size: 30))
                         }
                     }
-                    
-                    Spacer()
                 }
+                
+                Spacer()
             }
             .actionSheet(isPresented: $bImgSourceSheet){
                 ActionSheet(
@@ -138,6 +153,16 @@ struct EmbeddingView: View {
                             sourceType: self.uiipkrctrlerSourceType)
             }
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+        .onAppear() {
+            let app = UIApplication.shared.delegate as! AppDelegate
+            let context = app.persistentContainer.viewContext
+            
+            do {
+                self.arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+            } catch {
+                print(error)
+            }
         }
     }
 }

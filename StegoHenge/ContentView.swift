@@ -33,7 +33,7 @@ struct ContentView: View {
                 VStack {
                     Text("Steganography")
                         .foregroundColor(Color.white)
-                        .font(.custom("Futura-Medium", size: 30))
+                        .font(.custom("Futura-Medium", size: 100))
                     
                     Spacer()
                     
@@ -44,11 +44,11 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .foregroundColor(.white)
-                                    .frame(width: 50,alignment: .center)
+                                    .frame(width: 100,alignment: .center)
                                 
                                 Text("Start")
                                     .foregroundColor(Color.white)
-                                    .font(.custom("Futura-Medium", size: 30))
+                                    .font(.custom("Futura-Medium", size: 60))
                             }
                         }
                     }
@@ -69,22 +69,23 @@ struct ContentView: View {
                             Spacer()
                             
                             Text("Cryptography Algorithm")
-                                .font(.custom("Futura-Medium", size: 20))
                             
                             Picker(selection: self.$strCyptoAlgo, label: Text(self.strCyptoAlgo)) {
-                                Text("None").tag("None")
-                                Text("RSA").tag("RSA")
+                                Text("None")
+                                    .tag("None")
+                                Text("RSA")
+                                    .tag("RSA")
                             }
                             .pickerStyle(SegmentedPickerStyle())
                             
                             Spacer()
                         }
+                        .font(.custom("Futura-Medium", size: 30))
                         
                         VStack {
                             Spacer()
                             
                             Text("Steganography Algorithm")
-                                .font(.custom("Futura-Medium", size: 20))
                             
                             Picker(selection: self.$strStegoAlgo, label: Text(self.strStegoAlgo)) {
                                 Text("LSB Original")
@@ -98,6 +99,7 @@ struct ContentView: View {
                             
                             Spacer()
                         }
+                        .font(.custom("Futura-Medium", size: 30))
                         
                         VStack {
                             Spacer()
@@ -140,6 +142,32 @@ struct ContentView: View {
                                         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 2))
                                     Button(action: {
                                         self.bShowNewRSAUser = false
+                                        
+                                        let app = UIApplication.shared.delegate as! AppDelegate
+                                        let context = app.persistentContainer.viewContext
+                                        
+                                        let newRSAKey = RSAKey(context: context)
+                                        newRSAKey.name = self.strNewRSAUserName
+                                        newRSAKey.publicKey = self.strNewRSAUserKey
+                                        
+                                        app.saveContext()
+                                        
+                                        self.strNewRSAUserName = ""
+                                        self.strNewRSAUserKey = ""
+                                        
+                                        var arrRSAKey:[RSAKey]
+                                        
+                                        do {
+                                            self.textsRSAKey.removeAll()
+                                            
+                                            arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+                                            
+                                            for i in 0..<arrRSAKey.count {
+                                                self.textsRSAKey.append(Text(arrRSAKey[i].name ?? "Name Error"))
+                                            }
+                                        } catch {
+                                            print(error)
+                                        }
                                     }) {
                                         Image(systemName: "plus.circle.fill")
                                             .resizable()
@@ -153,8 +181,8 @@ struct ContentView: View {
                             
                             if self.bShowRSAUser {
                                 Form {
-                                    ForEach(0..<self.textsRSAKey.count) {
-                                        self.textsRSAKey[$0]
+                                    ForEach(0..<self.textsRSAKey.count) {i in
+                                        self.textsRSAKey[i]
                                             .contextMenu{
                                                 Button(action:{}) {
                                                     Text("Edit")
@@ -167,13 +195,13 @@ struct ContentView: View {
                                             }
                                     }
                                 }
-                                .frame(height: 200)
+                                .frame(height: 400)
                             }
                             
                             Spacer()
                         }
                         .buttonStyle(BorderlessButtonStyle())
-                        .font(.custom("Futura-Medium", size: 20))
+                        .font(.custom("Futura-Medium", size: 30))
                         
                         VStack {
                             Spacer()
@@ -197,12 +225,12 @@ struct ContentView: View {
                                         Text("All rights reserved.")
                                     }
                                 }
-                                .font(.custom("Futura-Medium", size: 16))
                                 
                                 Spacer()
                             }
                             Spacer()
                         }
+                        .font(.custom("Futura-Medium", size: 20))
                     }
                     .onAppear() {
                         let app = UIApplication.shared.delegate as! AppDelegate
@@ -254,23 +282,29 @@ struct ContentView: View {
                     }
                     .padding(.all, 20)
                 })
-                //.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
             .navigationBarItems(
                 trailing:
-                    Button(action: {
-                        self.bShowSetting = true
-                        self.bShowNewRSAUser = false
-                        self.bShowRSAUser = false
-                    }) {
-                        Image(systemName: "ellipsis")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(.white)
-                            .frame(width: 25, alignment: .trailing)
+                    VStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            self.bShowSetting = true
+                            self.bShowNewRSAUser = false
+                            self.bShowRSAUser = false
+                        }) {
+                            Image(systemName: "ellipsis")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.white)
+                                .frame(width: 50, height: 50, alignment: .trailing)
+                        }
+                        .frame(width: 200, height: 200, alignment: .trailing)
+                        .padding()
+                        
+                        Spacer()
                     }
-                    .frame(width: 200, height: 200, alignment: .trailing)
-                    .padding()
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
