@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3027F7D52540BFBF00285625 /* LSBOriginal_RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027F7D42540BFBF00285625 /* LSBOriginal_RSA.swift */; };
+		3027F7DA2540D11800285625 /* F5_RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027F7D92540D11800285625 /* F5_RSA.swift */; };
 		30290D5E253B53C300E87524 /* LSBOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D5D253B53C300E87524 /* LSBOriginal.swift */; };
 		30290D64253B6E9A00E87524 /* F5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D63253B6E9A00E87524 /* F5.swift */; };
 		30290D69253C102700E87524 /* Function4UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D68253C102700E87524 /* Function4UI.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3027F7D42540BFBF00285625 /* LSBOriginal_RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSBOriginal_RSA.swift; sourceTree = "<group>"; };
+		3027F7D92540D11800285625 /* F5_RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F5_RSA.swift; sourceTree = "<group>"; };
 		30290D5D253B53C300E87524 /* LSBOriginal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSBOriginal.swift; sourceTree = "<group>"; };
 		30290D63253B6E9A00E87524 /* F5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F5.swift; sourceTree = "<group>"; };
 		30290D68253C102700E87524 /* Function4UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function4UI.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				30290D5D253B53C300E87524 /* LSBOriginal.swift */,
+				3027F7D42540BFBF00285625 /* LSBOriginal_RSA.swift */,
 			);
 			path = LSB;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				30290D63253B6E9A00E87524 /* F5.swift */,
+				3027F7D92540D11800285625 /* F5_RSA.swift */,
 			);
 			path = F5;
 			sourceTree = "<group>";
@@ -353,6 +359,8 @@
 				30290D64253B6E9A00E87524 /* F5.swift in Sources */,
 				304F37E7253A2A1700FEEA9C /* Mathematic.swift in Sources */,
 				304F378A25387E4A00FEEA9C /* StegoHenge.xcdatamodeld in Sources */,
+				3027F7D52540BFBF00285625 /* LSBOriginal_RSA.swift in Sources */,
+				3027F7DA2540D11800285625 /* F5_RSA.swift in Sources */,
 				304F37C62538C9A500FEEA9C /* ExtractingView.swift in Sources */,
 				304F37C12538C98C00FEEA9C /* EmbeddingView.swift in Sources */,
 				304F378325387E4A00FEEA9C /* AppDelegate.swift in Sources */,

@@ -14,8 +14,13 @@ struct ExtractingView: View {
     
     @State private var uiipkrctrlerSourceType:UIImagePickerController.SourceType = .photoLibrary
     
-    @State private var uiiHidedImg:UIImage? = UIImage(named: "background")//nil
+    @State private var uiiHidedImg:UIImage? = nil
     @State private var urlHidedImg:URL? = nil
+    
+    @State private var strMessage:String? = nil
+    
+    @State private var arrConfigure:[Configure] = []
+    @State private var arrRSAKey:[RSAKey] = []
     
     var body: some View {
         ZStack {
@@ -32,7 +37,10 @@ struct ExtractingView: View {
                     .padding([.all],25)
                 
                 if(uiiHidedImg == nil) {
-                    Button (action: {self.bImgSourceSheet = true}) {
+                    Button (action: {
+                        self.bImgSourceSheet = true
+                        self.strMessage = nil
+                    }) {
                         VStack {
                             Image(systemName: "photo.on.rectangle.angled")
                                 .resizable()
@@ -47,8 +55,21 @@ struct ExtractingView: View {
                     }
                 }
                 
+                if(self.strMessage != nil) {
+                    Text("Message:")
+                        .font(.custom("Futura-Meduim", size: 100))
+                        .foregroundColor(.white)
+                        .padding([.all],25)
+                    Text(self.strMessage!)
+                        .font(.custom("Futura-Meduim", size: 100))
+                        .foregroundColor(.white)
+                        .padding([.all],25)
+                }
+                
                 if(uiiHidedImg != nil) {
-                    Button (action: {self.bImgSourceSheet = true}) {
+                    Button (action: {
+                        self.bImgSourceSheet = true
+                    }) {
                         VStack {
                             Image(uiImage: self.uiiHidedImg!)
                                 .resizable()
@@ -65,8 +86,30 @@ struct ExtractingView: View {
                     Spacer()
                     
                     Button(action: {
-                        //print(LSB_Take(image: self.uiiHidedImg) ?? "nil")
-                        print(F5_Take(image: self.uiiHidedImg) ?? "nil")
+                        if self.arrConfigure[0].strCyptoAlgo == "None" {
+                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                self.strMessage = LSB_Take(image: self.uiiHidedImg)
+                            }
+                            else {
+                                self.strMessage = F5_Take(image: self.uiiHidedImg)
+                            }
+                        }
+                        else {
+                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                self.strMessage = LSB_RSA_Take(
+                                    image: self.uiiHidedImg,
+                                    key: self.arrRSAKey[0].privateKey
+                                )
+                            }
+                            else {
+                                self.strMessage = F5_RSA_Take(
+                                    image: self.uiiHidedImg,
+                                    key: self.arrRSAKey[0].privateKey
+                                )
+                            }
+                        }
+                        
+                        self.uiiHidedImg = nil
                     }) {
                         VStack {
                             Image(systemName: "tray.and.arrow.up.fill")
@@ -105,6 +148,22 @@ struct ExtractingView: View {
                             sourceType: self.uiipkrctrlerSourceType)
             }
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+        .onAppear() {
+            let app = UIApplication.shared.delegate as! AppDelegate
+            let context = app.persistentContainer.viewContext
+            
+            do {
+                self.arrConfigure = try context.fetch(Configure.fetchRequest())
+            } catch {
+                print(error)
+            }
+            
+            do {
+                self.arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+            } catch {
+                print(error)
+            }
         }
     }
 }

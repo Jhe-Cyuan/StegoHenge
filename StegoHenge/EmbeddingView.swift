@@ -16,10 +16,12 @@ struct EmbeddingView: View {
     
     @State private var uiipkrctrlerSourceType:UIImagePickerController.SourceType = .photoLibrary
     
-    @State private var uiiCarrierImg:UIImage? = UIImage(named: "background")//nil
+    @State private var uiiCarrierImg:UIImage? = nil
     @State private var urlCarrierImg:URL? = nil
     
     @State private var uiiHidedImg:UIImage? = nil
+    
+    @State private var arrConfigure:[Configure] = []
     
     @State private var arrRSAKey:[RSAKey] = []
     @State private var iUserNameIndex:Int = 0
@@ -105,9 +107,30 @@ struct EmbeddingView: View {
                 
                 if(self.strMessage != "") {
                     Button(action: {
-                        self.uiiHidedImg = LSB_Hide(image: self.uiiCarrierImg, data: self.strMessage)
-                        
-                        self.uiiHidedImg = F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                        if self.arrConfigure[0].strCyptoAlgo == "None" {
+                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                self.uiiHidedImg = LSB_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                            }
+                            else {
+                                self.uiiHidedImg = F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                            }
+                        }
+                        else {
+                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                self.uiiHidedImg = LSB_RSA_Hide(
+                                    image: self.uiiCarrierImg,
+                                    data: self.strMessage,
+                                    key: self.arrRSAKey[self.iUserNameIndex].publicKey
+                                )
+                            }
+                            else {
+                                self.uiiHidedImg = F5_RSA_Hide(
+                                    image: self.uiiCarrierImg,
+                                    data: self.strMessage,
+                                    key: self.arrRSAKey[self.iUserNameIndex].publicKey
+                                )
+                            }
+                        }
                         
                         if self.uiiHidedImg != nil {
                             UIImageWriteToSavedPhotosAlbum(
@@ -157,6 +180,12 @@ struct EmbeddingView: View {
         .onAppear() {
             let app = UIApplication.shared.delegate as! AppDelegate
             let context = app.persistentContainer.viewContext
+            
+            do {
+                self.arrConfigure = try context.fetch(Configure.fetchRequest())
+            } catch {
+                print(error)
+            }
             
             do {
                 self.arrRSAKey = try context.fetch(RSAKey.fetchRequest())

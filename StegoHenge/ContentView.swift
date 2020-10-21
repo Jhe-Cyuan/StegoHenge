@@ -146,9 +146,11 @@ struct ContentView: View {
                                         let app = UIApplication.shared.delegate as! AppDelegate
                                         let context = app.persistentContainer.viewContext
                                         
-                                        let newRSAKey = RSAKey(context: context)
-                                        newRSAKey.name = self.strNewRSAUserName
-                                        newRSAKey.publicKey = self.strNewRSAUserKey
+                                        if self.strNewRSAUserName != "" && self.strNewRSAUserKey != "" {
+                                            let newRSAKey = RSAKey(context: context)
+                                            newRSAKey.name = self.strNewRSAUserName
+                                            newRSAKey.publicKey = self.strNewRSAUserKey
+                                        }
                                         
                                         app.saveContext()
                                         

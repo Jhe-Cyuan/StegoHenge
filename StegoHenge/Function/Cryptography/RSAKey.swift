@@ -29,6 +29,33 @@ func buildRSAKey() -> (privateKey:SecKey?, publicKey:SecKey?) {
     
     return (privateKey, publicKey)
 }
+
+func buildKeyFromString_Public(string rsaKey:String) ->SecKey? {
+    guard let data = Data(base64Encoded: rsaKey) else {return nil}
+    
+    let keyDict:[NSObject:NSObject] = [
+        kSecAttrType : kSecAttrKeyTypeRSA,
+        kSecAttrKeyClass : kSecAttrKeyClassPublic,
+        kSecAttrKeySizeInBits: NSNumber(value: 2048),
+        kSecReturnPersistentRef: true as NSObject
+    ]
+    
+    return SecKeyCreateWithData(data as CFData, keyDict as CFDictionary, nil)
+}
+
+func buildKeyFromString_Private(string rsaKey:String) ->SecKey? {
+    guard let data = Data(base64Encoded: rsaKey) else {return nil}
+    
+    let keyDict:[NSObject:NSObject] = [
+        kSecAttrType : kSecAttrKeyTypeRSA,
+        kSecAttrKeyClass : kSecAttrKeyClassPrivate,
+        kSecAttrKeySizeInBits : NSNumber(value: 2048),
+        kSecReturnPersistentRef : true as NSObject
+    ]
+    
+    return SecKeyCreateWithData(data as CFData, keyDict as CFDictionary, nil)
+}
+
 /*
 //建立私密金鑰的屬性，使用ＲＳＡ演算法，長度為2048位元
 //不存放於鑰匙圈，標籤為RSA privatekey
