@@ -13,6 +13,7 @@ struct EmbeddingView: View {
     
     @State private var bImgSourceSheet:Bool = false
     @State private var bShowImgPkr:Bool = false
+    @State private var bShowHidingFinished = false
     
     @State private var uiipkrctrlerSourceType:UIImagePickerController.SourceType = .photoLibrary
     
@@ -54,10 +55,22 @@ struct EmbeddingView: View {
                                 .font(.custom("Futura-Medium", size: 30))
                         }
                     }
+                    .actionSheet(isPresented: $bImgSourceSheet){
+                        ActionSheet(
+                            title : Text("Select your carrier image"),
+                            message: Text("please select png image."),
+                            buttons:[
+                                .default(Text("Photo Library")) {
+                                    self.bShowImgPkr = true
+                                    self.uiipkrctrlerSourceType = .photoLibrary
+                                }
+                            ]
+                        )
+                    }
                 }
                 
                 if(uiiCarrierImg != nil) {
-                    Button (action: {self.bImgSourceSheet = true}) {
+                    Button(action: {self.bImgSourceSheet = true}) {
                         VStack {
                             Image(uiImage: self.uiiCarrierImg!)
                                 .resizable()
@@ -70,25 +83,64 @@ struct EmbeddingView: View {
                                 .font(.custom("Futura-Medium", size: 30))
                         }
                     }
-                }
-                
-                if(uiiCarrierImg != nil) {
-                    Spacer()
+                    .actionSheet(isPresented: $bImgSourceSheet){
+                        ActionSheet(
+                            title : Text("Select your carrier image"),
+                            message: Text("please select png image."),
+                            buttons:[
+                                .default(Text("Photo Library")) {
+                                    self.bShowImgPkr = true
+                                    self.uiipkrctrlerSourceType = .photoLibrary
+                                }
+                            ]
+                        )
+                    }
                     
-                    Picker(
-                        selection: self.$iUserNameIndex,
-                        label: Text("For: \((self.arrRSAKey.count != 0) ? self.arrRSAKey[self.iUserNameIndex].name! : "")")) {
-                        ForEach(0..<self.arrRSAKey.count, id: \.self) { value in
-                            Text(self.arrRSAKey[value].name ?? "")
-                                .tag(value)
+                    if self.arrConfigure[0].strCyptoAlgo == "None" {
+                        if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                            Text("Max Message Size: \(Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8)) Bytes")
+                                .foregroundColor(.white)
+                                .font(.custom("Futura-Medium", size: 30))
+                                .padding([.all],25)
+                        }
+                        else {
+                            Text("Max Message Size: \(Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 * 3 / 7 / 8)) Bytes")
+                                .foregroundColor(.white)
+                                .font(.custom("Futura-Medium", size: 30))
+                                .padding([.all],25)
                         }
                     }
-                    .pickerStyle(MenuPickerStyle())
-                    .foregroundColor(Color.blue)
-                    .font(.custom("Futura-Medium", size: 30))
-                    .padding()
-                    .frame(width: 50, height: 16)
+                    else {
+                        if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                            Text("Max Message Size: \(245) Bytes")
+                                .foregroundColor(.white)
+                                .font(.custom("Futura-Medium", size: 30))
+                                .padding([.all],25)
+                        }
+                        else {
+                            Text("Max Message Size: \(245) Bytes")
+                                .foregroundColor(.white)
+                                .font(.custom("Futura-Medium", size: 30))
+                                .padding([.all],25)
+                        }
+                    }
                     
+                    if self.arrConfigure[0].strCyptoAlgo == "RSA" {
+                        Picker(
+                            selection: self.$iUserNameIndex,
+                            label: Text("For: \((self.arrRSAKey.count != 0) ? self.arrRSAKey[self.iUserNameIndex].name! : "")")) {
+                            ForEach(0..<self.arrRSAKey.count, id: \.self) { value in
+                                Text(self.arrRSAKey[value].name ?? "")
+                                    .tag(value)
+                            }
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        .foregroundColor(Color.blue)
+                        .font(.custom("Futura-Medium", size: 30))
+                        .padding()
+                        .frame(width: 50, height: 16)
+                    }
+                
                     HStack{
                         Image(systemName: "envelope.fill")
                             .resizable()
@@ -139,6 +191,7 @@ struct EmbeddingView: View {
                                 nil,
                                 nil
                             )
+                            self.bShowHidingFinished = true
                         }
                     }) {
                         VStack {
@@ -153,21 +206,19 @@ struct EmbeddingView: View {
                                 .font(.custom("Futura-Medium", size: 30))
                         }
                     }
+                    .alert(
+                        isPresented: self.$bShowHidingFinished,
+                        content:  {
+                            Alert(
+                                title: Text("Finished"),
+                                message: Text("Hided Image have benn saved."),
+                                dismissButton: .default(Text("Got it"))
+                            )
+                        }
+                    )
                 }
                 
                 Spacer()
-            }
-            .actionSheet(isPresented: $bImgSourceSheet){
-                ActionSheet(
-                    title : Text("Select your carrier image"),
-                    message: Text("please select png image."),
-                    buttons:[
-                        .default(Text("Photo Library")) {
-                            self.bShowImgPkr = true
-                            self.uiipkrctrlerSourceType = .photoLibrary
-                        }
-                    ]
-                )
             }
             .sheet(isPresented: $bShowImgPkr) {
                 ImagePicker(image: self.$uiiCarrierImg,

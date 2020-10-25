@@ -222,9 +222,7 @@ struct ContentView: View {
                                     }
                                     Text("")
                                     Group {
-                                        Text("Copyright © 2020")
                                         Text("MCU Graduation Project By Team 4.")
-                                        Text("All rights reserved.")
                                     }
                                 }
                                 
@@ -284,6 +282,67 @@ struct ContentView: View {
                     }
                     .padding(.all, 20)
                 })
+                .onAppear() {
+                    let app = UIApplication.shared.delegate as! AppDelegate
+                    let context = app.persistentContainer.viewContext
+                    var arrConfig:[Configure]
+                    var arrRSAKey:[RSAKey]
+                    
+                    do {
+                        arrConfig = try context.fetch(Configure.fetchRequest())
+                        
+                        switch arrConfig.count {
+                        case 0:
+                            let newConfig = Configure(context: context)
+                            newConfig.strCyptoAlgo = "RSA"
+                            newConfig.strStegoAlgo = "LSB Original"
+                            self.strCyptoAlgo = "RSA"
+                            self.strStegoAlgo = "LSB Original"
+                            app.saveContext()
+                        default:
+                            self.strCyptoAlgo = arrConfig[0].strCyptoAlgo!
+                            self.strStegoAlgo = arrConfig[0].strStegoAlgo!
+                        }
+                    } catch {
+                        print(error)
+                    }
+                    
+                    do {
+                        arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+                        
+                        switch arrRSAKey.count {
+                        case 0:
+                            let newRSAKey = RSAKey(context: context)
+                            let key = buildRSAKey()
+                            
+                            var data:Data
+                            var b64PublicKey:String = ""
+                            var b64PrivateKey:String = ""
+                            
+                            if let cfdata = SecKeyCopyExternalRepresentation(key.publicKey!, nil) {
+                                data = cfdata as Data
+                                b64PublicKey = data.base64EncodedString()
+                            }
+                            
+                            if let cfdata = SecKeyCopyExternalRepresentation(key.privateKey!, nil) {
+                                data = cfdata as Data
+                                b64PrivateKey = data.base64EncodedString()
+                            }
+                            
+                            newRSAKey.name = "MySelf"
+                            newRSAKey.publicKey = b64PublicKey
+                            newRSAKey.privateKey = b64PrivateKey
+                            
+                            app.saveContext()
+                        default:
+                            for i in 0..<arrRSAKey.count {
+                                self.textsRSAKey.append(Text(arrRSAKey[i].name ?? "Name Error"))
+                            }
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
             .navigationBarItems(
@@ -310,67 +369,6 @@ struct ContentView: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear() {
-            let app = UIApplication.shared.delegate as! AppDelegate
-            let context = app.persistentContainer.viewContext
-            var arrConfig:[Configure]
-            var arrRSAKey:[RSAKey]
-            
-            do {
-                arrConfig = try context.fetch(Configure.fetchRequest())
-                
-                switch arrConfig.count {
-                case 0:
-                    let newConfig = Configure(context: context)
-                    newConfig.strCyptoAlgo = "RSA"
-                    newConfig.strStegoAlgo = "LSB Original"
-                    self.strCyptoAlgo = "RSA"
-                    self.strStegoAlgo = "LSB Original"
-                    app.saveContext()
-                default:
-                    self.strCyptoAlgo = arrConfig[0].strCyptoAlgo!
-                    self.strStegoAlgo = arrConfig[0].strStegoAlgo!
-                }
-            } catch {
-                print(error)
-            }
-            
-            do {
-                arrRSAKey = try context.fetch(RSAKey.fetchRequest())
-                
-                switch arrRSAKey.count {
-                case 0:
-                    let newRSAKey = RSAKey(context: context)
-                    let key = buildRSAKey()
-                    
-                    var data:Data
-                    var b64PublicKey:String = ""
-                    var b64PrivateKey:String = ""
-                    
-                    if let cfdata = SecKeyCopyExternalRepresentation(key.publicKey!, nil) {
-                        data = cfdata as Data
-                        b64PublicKey = data.base64EncodedString()
-                    }
-                    
-                    if let cfdata = SecKeyCopyExternalRepresentation(key.privateKey!, nil) {
-                        data = cfdata as Data
-                        b64PrivateKey = data.base64EncodedString()
-                    }
-                    
-                    newRSAKey.name = "MySelf"
-                    newRSAKey.publicKey = b64PublicKey
-                    newRSAKey.privateKey = b64PrivateKey
-                    
-                    app.saveContext()
-                default:
-                    for i in 0..<arrRSAKey.count {
-                        self.textsRSAKey.append(Text(arrRSAKey[i].name ?? "Name Error"))
-                    }
-                }
-            } catch {
-                print(error)
-            }
-        }
     }
 }
 

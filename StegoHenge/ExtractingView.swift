@@ -53,17 +53,33 @@ struct ExtractingView: View {
                                 .font(.custom("Futura-Medium", size: 30))
                         }
                     }
+                    .actionSheet(isPresented: $bImgSourceSheet){
+                        ActionSheet(
+                            title :
+                                Text("Select your carrier image"),
+                            message:
+                                Text("please select png image."),
+                            buttons:[
+                                .default(Text("Photo Library")) {
+                                    self.bShowImgPkr = true
+                                    self.uiipkrctrlerSourceType = .photoLibrary
+                                }
+                            ]
+                        )
+                    }
                 }
                 
                 if(self.strMessage != nil) {
-                    Text("Message:")
-                        .font(.custom("Futura-Meduim", size: 100))
-                        .foregroundColor(.white)
-                        .padding([.all],25)
-                    Text(self.strMessage!)
-                        .font(.custom("Futura-Meduim", size: 100))
-                        .foregroundColor(.white)
-                        .padding([.all],25)
+                    ScrollView {
+                        Text("Message:")
+                            .font(.custom("Futura-Meduim", size: 100))
+                            .foregroundColor(.white)
+                            .padding([.all],25)
+                        Text(self.strMessage!)
+                            .font(.custom("Futura-Meduim", size: 100))
+                            .foregroundColor(.white)
+                            .padding([.all],25)
+                    }
                 }
                 
                 if(uiiHidedImg != nil) {
@@ -81,6 +97,20 @@ struct ExtractingView: View {
                                 .foregroundColor(Color.white)
                                 .font(.custom("Futura-Medium", size: 30))
                         }
+                    }
+                    .actionSheet(isPresented: $bImgSourceSheet){
+                        ActionSheet(
+                            title :
+                                Text("Select your carrier image"),
+                            message:
+                                Text("please select png image."),
+                            buttons:[
+                                .default(Text("Photo Library")) {
+                                    self.bShowImgPkr = true
+                                    self.uiipkrctrlerSourceType = .photoLibrary
+                                }
+                            ]
+                        )
                     }
                     
                     Spacer()
@@ -126,20 +156,6 @@ struct ExtractingView: View {
                 }
                 
                 Spacer()
-            }
-            .actionSheet(isPresented: $bImgSourceSheet){
-                ActionSheet(
-                    title :
-                        Text("Select your carrier image"),
-                    message:
-                        Text("please select png image."),
-                    buttons:[
-                        .default(Text("Photo Library")) {
-                            self.bShowImgPkr = true
-                            self.uiipkrctrlerSourceType = .photoLibrary
-                        }
-                    ]
-                )
             }
             .sheet(isPresented: $bShowImgPkr) {
                 ImagePicker(image: self.$uiiHidedImg,
