@@ -183,18 +183,27 @@ struct ContentView: View {
                             
                             if self.bShowRSAUser {
                                 Form {
-                                    ForEach(0..<self.textsRSAKey.count) {i in
-                                        self.textsRSAKey[i]
-                                            .contextMenu{
-                                                Button(action:{}) {
-                                                    Text("Edit")
-                                                    Image(systemName: "pencil")
+                                    self.textsRSAKey[0]
+                                        .contextMenu{
+                                            Button(action:{
+                                                let app = UIApplication.shared.delegate as! AppDelegate
+                                                let context = app.persistentContainer.viewContext
+                                                var arrRSAKey:[RSAKey]
+                                                
+                                                do {
+                                                    arrRSAKey = try context.fetch(RSAKey.fetchRequest())
+                                                    
+                                                    UIPasteboard.general.string = arrRSAKey[0].publicKey
+                                                } catch {
+                                                    print(error)
                                                 }
-                                                Button(action:{}) {
-                                                    Text("Delete")
-                                                    Image(systemName: "trash")
-                                                }
+                                            }) {
+                                                Text("Copy My RSA Public Key")
+                                                Image(systemName: "doc.on.doc")
                                             }
+                                        }
+                                    ForEach(1..<self.textsRSAKey.count) {i in
+                                        self.textsRSAKey[i]
                                     }
                                 }
                                 .frame(height: 400)
