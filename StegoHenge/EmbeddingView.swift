@@ -27,6 +27,8 @@ struct EmbeddingView: View {
     @State private var arrRSAKey:[RSAKey] = []
     @State private var iUserNameIndex:Int = 0
     
+    @State private var iMaxMessageSize:Int = 0
+    
     var body: some View {
         ZStack {
             Image("background")
@@ -96,34 +98,10 @@ struct EmbeddingView: View {
                         )
                     }
                     
-                    if self.arrConfigure[0].strCyptoAlgo == "None" {
-                        if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
-                            Text("Max Message Size: \(Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8)) Bytes")
-                                .foregroundColor(.white)
-                                .font(.custom("Futura-Medium", size: 30))
-                                .padding([.all],25)
-                        }
-                        else {
-                            Text("Max Message Size: \(Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 * 3 / 7 / 8)) Bytes")
-                                .foregroundColor(.white)
-                                .font(.custom("Futura-Medium", size: 30))
-                                .padding([.all],25)
-                        }
-                    }
-                    else {
-                        if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
-                            Text("Max Message Size: \(245) Bytes")
-                                .foregroundColor(.white)
-                                .font(.custom("Futura-Medium", size: 30))
-                                .padding([.all],25)
-                        }
-                        else {
-                            Text("Max Message Size: \(245) Bytes")
-                                .foregroundColor(.white)
-                                .font(.custom("Futura-Medium", size: 30))
-                                .padding([.all],25)
-                        }
-                    }
+                    Text("Max Message Size: \(self.iMaxMessageSize) Bytes")
+                        .foregroundColor(.white)
+                        .font(.custom("Futura-Medium", size: 30))
+                        .padding([.all],25)
                     
                     if self.arrConfigure[0].strCyptoAlgo == "RSA" {
                         Picker(
@@ -151,13 +129,17 @@ struct EmbeddingView: View {
                         TextField("Input your message here", text: $strMessage)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width:250)
+                        
+                        Text("(\(self.strMessage.utf8.count) Bytes)")
+                            .foregroundColor(.white)
+                            .font(.custom("Futura-Medium", size: 15))
                     }
                     .padding([.top],35)
                 }
                 
                 Spacer()
                 
-                if(self.strMessage != "") {
+                if(self.strMessage != "" && self.strMessage.utf8.count < self.iMaxMessageSize + 1) {
                     Button(action: {
                         if self.arrConfigure[0].strCyptoAlgo == "None" {
                             if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
@@ -211,7 +193,7 @@ struct EmbeddingView: View {
                         content:  {
                             Alert(
                                 title: Text("Finished"),
-                                message: Text("Hided Image have benn saved."),
+                                message: Text("Image have been saved."),
                                 dismissButton: .default(Text("Got it"))
                             )
                         }
@@ -225,6 +207,24 @@ struct EmbeddingView: View {
                             isShown: self.$bShowImgPkr,
                             imageURL: self.$urlCarrierImg,
                             sourceType: self.uiipkrctrlerSourceType)
+                    .onDisappear() {
+                        if self.arrConfigure[0].strCyptoAlgo == "None" {
+                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8)
+                            }
+                            else {
+                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56)
+                            }
+                        }
+                        else {
+                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8) < 126 ? 0 : 126
+                            }
+                            else {
+                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56) < 126 ? 0 : 126
+                            }
+                        }
+                    }
             }
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
