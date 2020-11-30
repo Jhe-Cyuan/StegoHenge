@@ -177,10 +177,12 @@ struct ContentView: View {
                     Picker(selection: self.$strStegoAlgo, label: Text(self.strStegoAlgo)) {
                         Text("LSB Original")
                             .tag("LSB Original")
-                        /*Text("LSB Match")
-                         .tag("LSB Match")*/
+                        Text("LSB Match")
+                            .tag("LSB Match")
                         Text("F5 Algorithm")
                             .tag("F5 Algorithm")
+                        Text("LSB Match + F5")
+                            .tag("LSB Match + F5")
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     
@@ -355,7 +357,6 @@ struct ContentView: View {
                     print(error)
                 }
             }
-            .frame(width: UIScreen.main.bounds.width - 100)
             
             Button(action: {
                 self.bShowSetting = false

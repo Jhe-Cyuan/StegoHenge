@@ -145,8 +145,13 @@ struct EmbeddingView: View {
                             if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
                                 self.uiiHidedImg = LSB_Hide(image: self.uiiCarrierImg, data: self.strMessage)
                             }
-                            else {
+                            else if self.arrConfigure[0].strStegoAlgo == "LSB Match" {
+                                self.uiiHidedImg = LSB_Match_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                            }
+                            else if self.arrConfigure[0].strStegoAlgo == "F5 Algorithm" {
                                 self.uiiHidedImg = F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
+                            }
+                            else if self.arrConfigure[0].strStegoAlgo == "LSB Match + F5" {
                             }
                         }
                         else {
@@ -157,12 +162,16 @@ struct EmbeddingView: View {
                                     key: self.arrRSAKey[self.iUserNameIndex].publicKey
                                 )
                             }
-                            else {
+                            else if self.arrConfigure[0].strStegoAlgo == "LSB Match" {
+                            }
+                            else if self.arrConfigure[0].strStegoAlgo == "F5 Algorithm" {
                                 self.uiiHidedImg = F5_RSA_Hide(
                                     image: self.uiiCarrierImg,
                                     data: self.strMessage,
                                     key: self.arrRSAKey[self.iUserNameIndex].publicKey
                                 )
+                            }
+                            else if self.arrConfigure[0].strStegoAlgo == "LSB Match + F5" {
                             }
                         }
                         
@@ -208,20 +217,22 @@ struct EmbeddingView: View {
                             imageURL: self.$urlCarrierImg,
                             sourceType: self.uiipkrctrlerSourceType)
                     .onDisappear() {
-                        if self.arrConfigure[0].strCyptoAlgo == "None" {
-                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
-                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8)
+                        if self.uiiCarrierImg != nil {
+                            if self.arrConfigure[0].strCyptoAlgo == "None" {
+                                if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8)
+                                }
+                                else {
+                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56)
+                                }
                             }
                             else {
-                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56)
-                            }
-                        }
-                        else {
-                            if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
-                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8) < 126 ? 0 : 126
-                            }
-                            else {
-                                self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56) < 126 ? 0 : 126
+                                if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8) < 126 ? 0 : 126
+                                }
+                                else {
+                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56) < 126 ? 0 : 126
+                                }
                             }
                         }
                     }

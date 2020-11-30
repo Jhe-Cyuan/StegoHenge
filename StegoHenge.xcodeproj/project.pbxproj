@@ -28,6 +28,7 @@
 		304F37E2253A29E900FEEA9C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37E1253A29E900FEEA9C /* Extension.swift */; };
 		304F37E7253A2A1700FEEA9C /* Mathematic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37E6253A2A1700FEEA9C /* Mathematic.swift */; };
 		304F37F0253A2A8700FEEA9C /* RSAKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F37EF253A2A8700FEEA9C /* RSAKey.swift */; };
+		30FC5C3A257488A00080F8A2 /* LSB Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C39257488A00080F8A2 /* LSB Match.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		304F37E1253A29E900FEEA9C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		304F37E6253A2A1700FEEA9C /* Mathematic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mathematic.swift; sourceTree = "<group>"; };
 		304F37EF253A2A8700FEEA9C /* RSAKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSAKey.swift; sourceTree = "<group>"; };
+		30FC5C39257488A00080F8A2 /* LSB Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +183,9 @@
 			isa = PBXGroup;
 			children = (
 				304F37F7253A2AC100FEEA9C /* LSB */,
+				30FC5C31257486F00080F8A2 /* LSB Match */,
 				304F37F8253A2ACA00FEEA9C /* F5 */,
+				30FC5C35257487040080F8A2 /* LSB Match + F5 */,
 			);
 			path = Steganography;
 			sourceTree = "<group>";
@@ -221,6 +225,21 @@
 				3027F7D92540D11800285625 /* F5_RSA.swift */,
 			);
 			path = F5;
+			sourceTree = "<group>";
+		};
+		30FC5C31257486F00080F8A2 /* LSB Match */ = {
+			isa = PBXGroup;
+			children = (
+				30FC5C39257488A00080F8A2 /* LSB Match.swift */,
+			);
+			path = "LSB Match";
+			sourceTree = "<group>";
+		};
+		30FC5C35257487040080F8A2 /* LSB Match + F5 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "LSB Match + F5";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +380,7 @@
 				304F378A25387E4A00FEEA9C /* StegoHenge.xcdatamodeld in Sources */,
 				3027F7D52540BFBF00285625 /* LSBOriginal_RSA.swift in Sources */,
 				3027F7DA2540D11800285625 /* F5_RSA.swift in Sources */,
+				30FC5C3A257488A00080F8A2 /* LSB Match.swift in Sources */,
 				304F37C62538C9A500FEEA9C /* ExtractingView.swift in Sources */,
 				304F37C12538C98C00FEEA9C /* EmbeddingView.swift in Sources */,
 				304F378325387E4A00FEEA9C /* AppDelegate.swift in Sources */,
