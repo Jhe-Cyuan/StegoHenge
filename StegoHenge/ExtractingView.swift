@@ -127,6 +127,7 @@ struct ExtractingView: View {
                                 self.strMessage = F5_Take(image: self.uiiHidedImg)
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "LSB Match + F5" {
+                                self.strMessage = LSB_Match_F5_Take(image: self.uiiHidedImg)
                             }
                         }
                         else {
@@ -137,6 +138,10 @@ struct ExtractingView: View {
                                 )
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "LSB Match" {
+                                self.strMessage = LSB_Match_RSA_Take(
+                                    image: self.uiiHidedImg,
+                                    key: self.arrRSAKey[0].privateKey
+                                )
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "F5 Algorithm" {
                                 self.strMessage = F5_RSA_Take(
@@ -145,6 +150,10 @@ struct ExtractingView: View {
                                 )
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "LSB Match + F5" {
+                                self.strMessage = LSB_Match_F5_RSA_Take(
+                                    image: self.uiiHidedImg,
+                                    key: self.arrRSAKey[0].privateKey
+                                )
                             }
                         }
                         

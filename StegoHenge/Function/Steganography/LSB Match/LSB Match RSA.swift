@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-func LSB_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?) ->UIImage? {
+func LSB_Match_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?) ->UIImage? {
     
     var ui8Img:[UInt8]? = nil
     
@@ -47,12 +47,27 @@ func LSB_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?
             continue
         }
         
-        if (ui8Img![iImgIndex] & 1) < ui8BinInfo[iInfoIndex] {
-            ui8Img![iImgIndex] += 1
+        if (ui8Img![iImgIndex] & 1) != ui8BinInfo[iInfoIndex] {
+            let base = Int.random(in: 0 ... 100), num = Int.random(in: 0 ... 100)
+            
+            //edge
+            if ui8Img![iImgIndex] == 0 {
+                ui8Img![iImgIndex] += 1
+            }
+            else if ui8Img![iImgIndex] == 255 {
+                ui8Img![iImgIndex] -= 1
+            }
+            else {
+                //other
+                if num < base {
+                    ui8Img![iImgIndex] -= 1
+                }
+                else {
+                    ui8Img![iImgIndex] += 1
+                }
+            }
         }
-        else if (ui8Img![iImgIndex] & 1) > ui8BinInfo[iInfoIndex] {
-            ui8Img![iImgIndex] -= 1
-        }
+        
         iImgIndex += 1
         iInfoIndex += 1
     }
@@ -60,7 +75,7 @@ func LSB_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?
     return ui8Img?.toImage(width: Int(uiiImg!.size.width), height: Int(uiiImg!.size.height), colorSpace: uiiImg!.cgImage!.colorSpace!)
 }
 
-func LSB_RSA_Take(image uiiImg:UIImage?, key rsaKey:String?) -> String? {
+func LSB_Match_RSA_Take(image uiiImg:UIImage?, key rsaKey:String?) -> String? {
     
     var ui8Img:[UInt8]? = nil
     

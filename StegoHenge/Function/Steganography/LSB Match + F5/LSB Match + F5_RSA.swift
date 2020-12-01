@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-func F5_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?) ->UIImage? {
+func LSB_Match_F5_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?) ->UIImage? {
     
     var ui8Img:[UInt8]? = nil
     
@@ -96,7 +96,25 @@ func F5_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?)
                 if (iChange + 1) % 4 == 0 {
                     iChange -= 1
                 }
-                ui8Img![iChange] ^= 1
+                
+                let base = Int.random(in: 0 ... 100), num = Int.random(in: 0 ... 100)
+                
+                //edge
+                if ui8Img![iChange] == 0 {
+                    ui8Img![iChange] += 1
+                }
+                else if ui8Img![iChange] == 255 {
+                    ui8Img![iChange] -= 1
+                }
+                else {
+                    //other
+                    if num < base {
+                        ui8Img![iChange] -= 1
+                    }
+                    else {
+                        ui8Img![iChange] += 1
+                    }
+                }
             }
             
             iF5BlockCount = 0
@@ -113,7 +131,7 @@ func F5_RSA_Hide(image uiiImg:UIImage?, data strInfo:String, key rsaKey:String?)
     return ui8Img?.toImage(width: Int(uiiImg!.size.width), height: Int(uiiImg!.size.height), colorSpace: uiiImg!.cgImage!.colorSpace!)
 }
 
-func F5_RSA_Take(image uiiImg:UIImage?, key rsaKey:String?) -> String? {
+func LSB_Match_F5_RSA_Take(image uiiImg:UIImage?, key rsaKey:String?) -> String? {
     
     var ui8Img:[UInt8]? = nil
     

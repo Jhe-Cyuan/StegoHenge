@@ -50,6 +50,7 @@ func LSB_Hide(image uiiImg:UIImage?, data strInfo:String) -> UIImage? {
         else if (ui8Img![iImgIndex] & 1) > ui8BinInfo[iInfoIndex] {
             ui8Img![iImgIndex] -= 1
         }
+        
         iImgIndex += 1
         iInfoIndex += 1
     }

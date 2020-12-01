@@ -126,10 +126,10 @@ struct EmbeddingView: View {
                             .frame(width: 50)
                             .foregroundColor(.white)
                         
-                        TextField("Input your message here", text: $strMessage)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .frame(width:250)
-                        
+                        TextEditor( text: $strMessage)
+                            .frame(width: 300, height: 100)
+                            .overlay(RoundedRectangle(cornerRadius: 0).stroke(lineWidth: 2))
+                            
                         Text("(\(self.strMessage.utf8.count) Bytes)")
                             .foregroundColor(.white)
                             .font(.custom("Futura-Medium", size: 15))
@@ -137,9 +137,7 @@ struct EmbeddingView: View {
                     .padding([.top],35)
                 }
                 
-                Spacer()
-                
-                if(self.strMessage != "" && self.strMessage.utf8.count < self.iMaxMessageSize + 1) {
+                if(self.strMessage != ""/* && self.strMessage.utf8.count < self.iMaxMessageSize + 1*/) {
                     Button(action: {
                         if self.arrConfigure[0].strCyptoAlgo == "None" {
                             if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
@@ -152,6 +150,7 @@ struct EmbeddingView: View {
                                 self.uiiHidedImg = F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "LSB Match + F5" {
+                                self.uiiHidedImg = LSB_Match_F5_Hide(image: self.uiiCarrierImg, data: self.strMessage)
                             }
                         }
                         else {
@@ -163,6 +162,11 @@ struct EmbeddingView: View {
                                 )
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "LSB Match" {
+                                self.uiiHidedImg = LSB_Match_RSA_Hide(
+                                    image: self.uiiCarrierImg,
+                                    data: self.strMessage,
+                                    key: self.arrRSAKey[self.iUserNameIndex].publicKey
+                                )
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "F5 Algorithm" {
                                 self.uiiHidedImg = F5_RSA_Hide(
@@ -172,6 +176,11 @@ struct EmbeddingView: View {
                                 )
                             }
                             else if self.arrConfigure[0].strStegoAlgo == "LSB Match + F5" {
+                                self.uiiHidedImg = LSB_Match_F5_RSA_Hide(
+                                    image: self.uiiCarrierImg,
+                                    data: self.strMessage,
+                                    key: self.arrRSAKey[self.iUserNameIndex].publicKey
+                                )
                             }
                         }
                         

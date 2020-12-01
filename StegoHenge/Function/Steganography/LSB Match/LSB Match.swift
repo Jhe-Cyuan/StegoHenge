@@ -44,14 +44,7 @@ func LSB_Match_Hide(image uiiImg:UIImage?, data strInfo:String) -> UIImage? {
             continue
         }
         
-        if (ui8Img![iImgIndex] & 1) < ui8BinInfo[iInfoIndex] {
-            ui8Img![iImgIndex] += 1
-        }
-        else if (ui8Img![iImgIndex] & 1) > ui8BinInfo[iInfoIndex] {
-            ui8Img![iImgIndex] -= 1
-        }
-        
-        if ui8Img![iImgIndex] ~= ui8BinInfo[iInfoIndex] {
+        if (ui8Img![iImgIndex] & 1) != ui8BinInfo[iInfoIndex] {
             let base = Int.random(in: 0 ... 100), num = Int.random(in: 0 ... 100)
             
             //edge
@@ -61,13 +54,14 @@ func LSB_Match_Hide(image uiiImg:UIImage?, data strInfo:String) -> UIImage? {
             else if ui8Img![iImgIndex] == 255 {
                 ui8Img![iImgIndex] -= 1
             }
-            
-            //other
-            if num < base {
-                ui8Img![iImgIndex] -= 1
-            }
             else {
-                ui8Img![iImgIndex] += 1
+                //other
+                if num < base {
+                    ui8Img![iImgIndex] -= 1
+                }
+                else {
+                    ui8Img![iImgIndex] += 1
+                }
             }
         }
         
