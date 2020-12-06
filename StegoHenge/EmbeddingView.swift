@@ -52,7 +52,7 @@ struct EmbeddingView: View {
                                 .frame(height: 65)
                                 .foregroundColor(.white)
                             
-                            Text("Click to Select Image")
+                            Text("Click to Select Cover Image")
                                 .foregroundColor(Color.white)
                                 .font(.custom("Futura-Medium", size: 30))
                         }

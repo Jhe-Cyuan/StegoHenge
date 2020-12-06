@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3027F7D52540BFBF00285625 /* LSBOriginal_RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027F7D42540BFBF00285625 /* LSBOriginal_RSA.swift */; };
-		3027F7DA2540D11800285625 /* F5_RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027F7D92540D11800285625 /* F5_RSA.swift */; };
-		30290D5E253B53C300E87524 /* LSBOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D5D253B53C300E87524 /* LSBOriginal.swift */; };
+		3027F7D52540BFBF00285625 /* LSB Original RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027F7D42540BFBF00285625 /* LSB Original RSA.swift */; };
+		3027F7DA2540D11800285625 /* F5 RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3027F7D92540D11800285625 /* F5 RSA.swift */; };
+		30290D5E253B53C300E87524 /* LSB Original.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D5D253B53C300E87524 /* LSB Original.swift */; };
 		30290D64253B6E9A00E87524 /* F5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290D63253B6E9A00E87524 /* F5.swift */; };
 		304F378325387E4A00FEEA9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F378225387E4A00FEEA9C /* AppDelegate.swift */; };
 		304F378525387E4A00FEEA9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F378425387E4A00FEEA9C /* SceneDelegate.swift */; };
@@ -30,7 +30,8 @@
 		30FC5C3A257488A00080F8A2 /* LSB Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C39257488A00080F8A2 /* LSB Match.swift */; };
 		30FC5C442575DFAC0080F8A2 /* LSB Match RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C432575DFAC0080F8A2 /* LSB Match RSA.swift */; };
 		30FC5C492575E6170080F8A2 /* LSB Match + F5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C482575E6170080F8A2 /* LSB Match + F5.swift */; };
-		30FC5C4E2575E6320080F8A2 /* LSB Match + F5_RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C4D2575E6320080F8A2 /* LSB Match + F5_RSA.swift */; };
+		30FC5C4E2575E6320080F8A2 /* LSB Match + F5 RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C4D2575E6320080F8A2 /* LSB Match + F5 RSA.swift */; };
+		30FC5C592575EC240080F8A2 /* RSA Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C582575EC240080F8A2 /* RSA Function.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3027F7D42540BFBF00285625 /* LSBOriginal_RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSBOriginal_RSA.swift; sourceTree = "<group>"; };
-		3027F7D92540D11800285625 /* F5_RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F5_RSA.swift; sourceTree = "<group>"; };
-		30290D5D253B53C300E87524 /* LSBOriginal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSBOriginal.swift; sourceTree = "<group>"; };
+		3027F7D42540BFBF00285625 /* LSB Original RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Original RSA.swift"; sourceTree = "<group>"; };
+		3027F7D92540D11800285625 /* F5 RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "F5 RSA.swift"; sourceTree = "<group>"; };
+		30290D5D253B53C300E87524 /* LSB Original.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Original.swift"; sourceTree = "<group>"; };
 		30290D63253B6E9A00E87524 /* F5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F5.swift; sourceTree = "<group>"; };
 		304F377F25387E4A00FEEA9C /* StegoHenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StegoHenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304F378225387E4A00FEEA9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +81,8 @@
 		30FC5C39257488A00080F8A2 /* LSB Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match.swift"; sourceTree = "<group>"; };
 		30FC5C432575DFAC0080F8A2 /* LSB Match RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match RSA.swift"; sourceTree = "<group>"; };
 		30FC5C482575E6170080F8A2 /* LSB Match + F5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match + F5.swift"; sourceTree = "<group>"; };
-		30FC5C4D2575E6320080F8A2 /* LSB Match + F5_RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match + F5_RSA.swift"; sourceTree = "<group>"; };
+		30FC5C4D2575E6320080F8A2 /* LSB Match + F5 RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match + F5 RSA.swift"; sourceTree = "<group>"; };
+		30FC5C582575EC240080F8A2 /* RSA Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSA Function.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				304F37EF253A2A8700FEEA9C /* RSAKey.swift */,
+				30FC5C582575EC240080F8A2 /* RSA Function.swift */,
 			);
 			path = Cryptography;
 			sourceTree = "<group>";
@@ -215,8 +218,8 @@
 		304F37F7253A2AC100FEEA9C /* LSB */ = {
 			isa = PBXGroup;
 			children = (
-				30290D5D253B53C300E87524 /* LSBOriginal.swift */,
-				3027F7D42540BFBF00285625 /* LSBOriginal_RSA.swift */,
+				30290D5D253B53C300E87524 /* LSB Original.swift */,
+				3027F7D42540BFBF00285625 /* LSB Original RSA.swift */,
 			);
 			path = LSB;
 			sourceTree = "<group>";
@@ -225,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				30290D63253B6E9A00E87524 /* F5.swift */,
-				3027F7D92540D11800285625 /* F5_RSA.swift */,
+				3027F7D92540D11800285625 /* F5 RSA.swift */,
 			);
 			path = F5;
 			sourceTree = "<group>";
@@ -243,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				30FC5C482575E6170080F8A2 /* LSB Match + F5.swift */,
-				30FC5C4D2575E6320080F8A2 /* LSB Match + F5_RSA.swift */,
+				30FC5C4D2575E6320080F8A2 /* LSB Match + F5 RSA.swift */,
 			);
 			path = "LSB Match + F5";
 			sourceTree = "<group>";
@@ -380,17 +383,18 @@
 			files = (
 				304F37E2253A29E900FEEA9C /* Extension.swift in Sources */,
 				304F37B92538857100FEEA9C /* StegoView.swift in Sources */,
-				30290D5E253B53C300E87524 /* LSBOriginal.swift in Sources */,
+				30290D5E253B53C300E87524 /* LSB Original.swift in Sources */,
 				30290D64253B6E9A00E87524 /* F5.swift in Sources */,
 				304F37E7253A2A1700FEEA9C /* Mathematic.swift in Sources */,
 				304F378A25387E4A00FEEA9C /* StegoHenge.xcdatamodeld in Sources */,
-				30FC5C4E2575E6320080F8A2 /* LSB Match + F5_RSA.swift in Sources */,
+				30FC5C4E2575E6320080F8A2 /* LSB Match + F5 RSA.swift in Sources */,
 				30FC5C492575E6170080F8A2 /* LSB Match + F5.swift in Sources */,
-				3027F7D52540BFBF00285625 /* LSBOriginal_RSA.swift in Sources */,
-				3027F7DA2540D11800285625 /* F5_RSA.swift in Sources */,
+				3027F7D52540BFBF00285625 /* LSB Original RSA.swift in Sources */,
+				3027F7DA2540D11800285625 /* F5 RSA.swift in Sources */,
 				30FC5C3A257488A00080F8A2 /* LSB Match.swift in Sources */,
 				30FC5C442575DFAC0080F8A2 /* LSB Match RSA.swift in Sources */,
 				304F37C62538C9A500FEEA9C /* ExtractingView.swift in Sources */,
+				30FC5C592575EC240080F8A2 /* RSA Function.swift in Sources */,
 				304F37C12538C98C00FEEA9C /* EmbeddingView.swift in Sources */,
 				304F378325387E4A00FEEA9C /* AppDelegate.swift in Sources */,
 				304F37D22539F55800FEEA9C /* ImagePicker.swift in Sources */,
