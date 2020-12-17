@@ -29,6 +29,8 @@ struct EmbeddingView: View {
     
     @State private var iMaxMessageSize:Int = 0
     
+    @State private var iPSNR:(Double, Double) = (0, 0)
+    
     var body: some View {
         ZStack {
             Image("background")
@@ -102,6 +104,12 @@ struct EmbeddingView: View {
                         .foregroundColor(.white)
                         .font(.custom("Futura-Medium", size: 30))
                         .padding([.all],25)
+                    
+                    if self.iPSNR.1 != 0 {
+                        Text("MSE: \(self.iPSNR.0), PSNR: \(self.iPSNR.1)")
+                            .foregroundColor(.white)
+                            .font(.custom("Futura-Medium", size: 30))
+                    }
                     
                     if self.arrConfigure[0].strCyptoAlgo == "RSA" {
                         Picker(
@@ -193,6 +201,13 @@ struct EmbeddingView: View {
                             )
                             self.bShowHidingFinished = true
                         }
+                        
+                        self.iPSNR = psnrCounter(
+                            height: Int(self.uiiHidedImg!.size.height),
+                            width: Int(self.uiiHidedImg!.size.width),
+                            original: self.uiiCarrierImg!.toRGB()!,
+                            hided: self.uiiHidedImg!.toRGB()!
+                        )
                     }) {
                         VStack {
                             Image(systemName: "tray.and.arrow.down.fill")
@@ -228,15 +243,17 @@ struct EmbeddingView: View {
                     .onDisappear() {
                         if self.uiiCarrierImg != nil {
                             if self.arrConfigure[0].strCyptoAlgo == "None" {
-                                if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
-                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8)
+                                if self.arrConfigure[0].strStegoAlgo == "LSB Original" ||
+                                    self.arrConfigure[0].strStegoAlgo == "LSB Match" {
+                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8) - 8
                                 }
                                 else {
-                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56)
+                                    self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 9 / 56) - 8
                                 }
                             }
                             else {
-                                if self.arrConfigure[0].strStegoAlgo == "LSB Original" {
+                                if self.arrConfigure[0].strStegoAlgo == "LSB Original" ||
+                                    self.arrConfigure[0].strStegoAlgo == "LSB Match" {
                                     self.iMaxMessageSize = Int(self.uiiCarrierImg!.size.height * self.uiiCarrierImg!.size.width * 3 / 8) < 126 ? 0 : 126
                                 }
                                 else {

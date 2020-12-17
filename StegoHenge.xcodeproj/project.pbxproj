@@ -32,6 +32,7 @@
 		30FC5C492575E6170080F8A2 /* LSB Match + F5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C482575E6170080F8A2 /* LSB Match + F5.swift */; };
 		30FC5C4E2575E6320080F8A2 /* LSB Match + F5 RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C4D2575E6320080F8A2 /* LSB Match + F5 RSA.swift */; };
 		30FC5C592575EC240080F8A2 /* RSA Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C582575EC240080F8A2 /* RSA Function.swift */; };
+		30FC5C67257CD21D0080F8A2 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FC5C66257CD21D0080F8A2 /* Statistic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		30FC5C482575E6170080F8A2 /* LSB Match + F5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match + F5.swift"; sourceTree = "<group>"; };
 		30FC5C4D2575E6320080F8A2 /* LSB Match + F5 RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LSB Match + F5 RSA.swift"; sourceTree = "<group>"; };
 		30FC5C582575EC240080F8A2 /* RSA Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSA Function.swift"; sourceTree = "<group>"; };
+		30FC5C66257CD21D0080F8A2 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				304F37E1253A29E900FEEA9C /* Extension.swift */,
 				304F37E6253A2A1700FEEA9C /* Mathematic.swift */,
 				304F37D12539F55800FEEA9C /* ImagePicker.swift */,
+				30FC5C66257CD21D0080F8A2 /* Statistic.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				30290D64253B6E9A00E87524 /* F5.swift in Sources */,
 				304F37E7253A2A1700FEEA9C /* Mathematic.swift in Sources */,
 				304F378A25387E4A00FEEA9C /* StegoHenge.xcdatamodeld in Sources */,
+				30FC5C67257CD21D0080F8A2 /* Statistic.swift in Sources */,
 				30FC5C4E2575E6320080F8A2 /* LSB Match + F5 RSA.swift in Sources */,
 				30FC5C492575E6170080F8A2 /* LSB Match + F5.swift in Sources */,
 				3027F7D52540BFBF00285625 /* LSB Original RSA.swift in Sources */,

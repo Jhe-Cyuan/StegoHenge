@@ -76,6 +76,7 @@ func F5_Hide(image uiiImg:UIImage?, data strInfo:String) -> UIImage? {
             let ui8InfoL3:[UInt8] = [ui8BinInfo[iInfoIndex + 2], ui8BinInfo[iInfoIndex + 1], ui8BinInfo[iInfoIndex]]
             let iNeedChange:Int = (bin2dec(binArr: ui8HammingCode) ^ bin2dec(binArr: ui8InfoL3)) - 1
             if iNeedChange >= 0 {
+                print("F5 Change")
                 var iCount:Int = 0
                 var iChange:Int = iImgIndex
                 while iCount < 6 - iNeedChange {
